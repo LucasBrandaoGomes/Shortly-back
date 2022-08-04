@@ -1,4 +1,4 @@
-CREATE TABLE "public.users_urls" (
+CREATE TABLE users_urls (
 	"id" serial NOT NULL,
 	"user_id" integer NOT NULL,
 	"url_shortened_id" integer NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE "public.users_urls" (
   OIDS=FALSE
 );
 
-CREATE TABLE "public.urls" (
+CREATE TABLE urls (
 	"id" serial NOT NULL,
 	"url" varchar NOT NULL,
 	"short_url" varchar NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE "public.urls" (
   OIDS=FALSE
 );
 
-CREATE TABLE "public.users" (
+CREATE TABLE users (
 	"id" serial NOT NULL,
 	"name" varchar(50) NOT NULL,
 	"email" varchar(50) NOT NULL UNIQUE,
