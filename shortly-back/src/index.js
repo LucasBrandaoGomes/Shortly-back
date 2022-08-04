@@ -3,6 +3,7 @@ import express, { json } from "express"
 import  cors  from "cors"
 import dotenv from 'dotenv';
 import signupRoute from './routes/signupRoute.js'
+import signinRoute from './routes/signinRoute.js'
 
 dotenv.config();
 const app = express()
@@ -15,6 +16,6 @@ app.use(cors(corsOptions));
 app.use(json());
 
 app.use(signupRoute)
-
+app.use(signinRoute)
 const PORT = process.env.PORT;
 app.listen(PORT ,  () => console.log(`server running - port ${PORT}`));

@@ -23,7 +23,7 @@ CREATE TABLE users (
 	"id" serial NOT NULL,
 	"name" varchar(50) NOT NULL,
 	"email" varchar(50) NOT NULL UNIQUE,
-	"passord" varchar NOT NULL,
+	"password" varchar NOT NULL,
 	"created_at" TIMESTAMP NOT NULL DEFAULT 'now ()',
 	CONSTRAINT "users_pk" PRIMARY KEY ("id")
 ) WITH (

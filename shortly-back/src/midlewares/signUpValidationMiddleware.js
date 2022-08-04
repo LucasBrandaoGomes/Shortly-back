@@ -1,10 +1,11 @@
 import connection from '../database.js'
 import { signupSchema } from '../utilities/schemas.js';
+import bcrypt from 'bcrypt';
 
 export default async function SignUpValidationMiddleware(req, res, next) {
     const newUser = req.body;
-    const newrUserValidation = signupSchema.validate(newUser);
-    const { error } = newrUserValidation
+    const validation = signupSchema.validate(newUser);
+    const { error } = validation
 
     if(error){
     const errorMsgs = error.details.map(err => err.message)
@@ -22,10 +23,13 @@ export default async function SignUpValidationMiddleware(req, res, next) {
             res.sendStatus(409);
             return;
         }
+
+        const passwordEncrypted = bcrypt.hashSync(newUser.password, 10)
+
         req.locals = {
             name: newUser.name,
             email: newUser.email,
-            password: newUser.password
+            password: passwordEncrypted
         }
         next();
     } catch (error) {
