@@ -13,4 +13,10 @@ const signinSchema = Joi.object(
       password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required()
     });
 
-export { signupSchema, signinSchema };
+const newUrlSchema = Joi.object(
+    {
+      url: Joi.string().uri().required()
+    }
+);
+
+export { signupSchema, signinSchema, newUrlSchema };

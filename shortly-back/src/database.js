@@ -8,7 +8,7 @@ const user = 'postgres';
 const password = 'brandao92167';
 const host = 'localhost';
 const port = 5432;
-const database = 'projeto_shortly';
+const database = 'shortly_project';
 
 const connection = new Pool({
   user,
