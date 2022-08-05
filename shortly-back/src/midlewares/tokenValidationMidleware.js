@@ -7,13 +7,20 @@ dotenv.config();
 export default async function TokenValidateMiddleware(req, res, next) {
     const { authorization } = req.headers
     const token = authorization?.replace('Bearer ', '')
-    const { userId } = jwt.verify(token, process.env.JWT_SECRET);
-    const loggedUser = await connection.query(`
-    SELECT * FROM users WHERE id=$1`, [userId])
-    if (!loggedUser.rows[0]) {
-        return res.status(401).send('Unauthorized');
+
+    if (!token){
+        res.sendStatus(401)
+        return;
+    }else{
+        const token = authorization?.replace('Bearer ', '')
+        const { userId } = jwt.verify(token, process.env.JWT_SECRET);
+        const loggedUser = await connection.query(`
+        SELECT * FROM users WHERE id=$1`, [userId])
+        if (!loggedUser.rows[0]) {
+            return res.status(401).send('Unauthorized');
+        }
+        res.locals.id = loggedUser.rows[0].id
+        
+        next();
     }
-    res.locals.id = loggedUser.rows[0].id
-    
-    next();
 }
