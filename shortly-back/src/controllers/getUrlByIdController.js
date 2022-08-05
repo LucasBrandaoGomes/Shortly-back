@@ -1,6 +1,6 @@
 import connection from "../database.js";
 
-export async function GetUrlById(req, res){
+export async function getUrlById(req, res){
     const { id } = req.params
 
     try{

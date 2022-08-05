@@ -1,6 +1,6 @@
 import connection from "../database.js";
 
-export async function OpenShortUrl(req, res){
+export async function openShortUrl(req, res){
     const { shortUrl } = req.params
 
     try{

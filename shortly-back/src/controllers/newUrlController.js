@@ -1,7 +1,7 @@
 import connection from "../database.js";
 import { nanoid } from 'nanoid'
 
-export async function NewUrl(req, res){
+export async function newUrl(req, res){
     const  url  = res.locals.url
     const  id  = res.locals.id
     const shortUrl =  nanoid();

@@ -2,7 +2,7 @@ import connection from '../database.js'
 import { signupSchema } from '../utilities/schemas.js';
 import bcrypt from 'bcrypt';
 
-export default async function SignUpValidationMiddleware(req, res, next) {
+export default async function signUpValidationMiddleware(req, res, next) {
     const newUser = req.body;
     const validation = signupSchema.validate(newUser);
     const { error } = validation

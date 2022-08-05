@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 const secretKey = process.env.JWT_SECRET
 
-export default async function NewUrlMiddleware(req, res, next) {
+export default async function newUrlMiddleware(req, res, next) {
     const newUrl = req.body;
     const validation = newUrlSchema.validate(newUrl);
     const { error } = validation

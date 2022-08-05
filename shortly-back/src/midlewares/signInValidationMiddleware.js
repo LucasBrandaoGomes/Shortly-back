@@ -7,7 +7,7 @@ import bcrypt from 'bcrypt';
 dotenv.config();
 const secretKey = process.env.JWT_SECRET
 
-export default async function SignInValidationMiddleware(req, res, next) {
+export default async function signInValidationMiddleware(req, res, next) {
     const newLogin = req.body;
     const validation = signinSchema.validate(newLogin);
     const { error } = validation

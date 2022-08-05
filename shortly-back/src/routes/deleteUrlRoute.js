@@ -1,9 +1,9 @@
 import { Router } from "express"
-import { DeleteUrlById } from "../controllers/deleteUrlByIdController.js";
-import TokenValidateMiddleware from "../midlewares/tokenValidationMidleware.js";
+import { deleteUrlById } from "../controllers/deleteUrlByIdController.js";
+import tokenValidateMiddleware from "../midlewares/tokenValidationMidleware.js";
 
 const router = Router()
 
-router.delete('/urls/:id', TokenValidateMiddleware , DeleteUrlById)
+router.delete('/urls/:id', tokenValidateMiddleware , deleteUrlById)
 
 export default router;

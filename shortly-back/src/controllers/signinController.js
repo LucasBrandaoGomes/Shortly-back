@@ -1,4 +1,4 @@
-export async function SignIn(req, res){
+export async function signIn(req, res){
 
     const { token }  = req.locals
 

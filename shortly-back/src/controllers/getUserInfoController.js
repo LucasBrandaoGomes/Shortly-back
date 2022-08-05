@@ -1,6 +1,6 @@
 import connection from "../database.js";
 
-export async function GetUserInfo(req, res){
+export async function getUserInfo(req, res){
     const userId = res.locals.id
 
     try{

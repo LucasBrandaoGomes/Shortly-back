@@ -1,8 +1,8 @@
 import { Router } from "express"
-import { OpenShortUrl } from "../controllers/openShortUrlController.js";
+import { openShortUrl } from "../controllers/openShortUrlController.js";
 
 const router = Router()
 
-router.get('/urls/open/:shortUrl', OpenShortUrl)
+router.get('/urls/open/:shortUrl', openShortUrl)
 
 export default router;

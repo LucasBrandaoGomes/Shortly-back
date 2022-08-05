@@ -1,6 +1,6 @@
 import connection from "../database.js";
 
-export async function SignUp(req, res){
+export async function signUp(req, res){
 
     const { name, email, password }  = req.locals
 

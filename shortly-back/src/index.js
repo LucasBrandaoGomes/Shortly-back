@@ -9,6 +9,7 @@ import getUrlById from './routes/getUrlByIdRoute.js'
 import openShorUrlRoute from './routes/openShortUrlRoute.js'
 import deleteUrlRoute from './routes/deleteUrlRoute.js'
 import getUserInfoRoute from './routes/getUserInfoRoute.js'
+import getRankingRoute from './routes/getRankingRoute.js'
 
 dotenv.config();
 const app = express()
@@ -27,6 +28,7 @@ app.use(getUrlById)
 app.use(openShorUrlRoute)
 app.use(deleteUrlRoute)
 app.use(getUserInfoRoute)
+app.use(getRankingRoute)
 
 const PORT = process.env.PORT;
 app.listen(PORT ,  () => console.log(`server running - port ${PORT}`));

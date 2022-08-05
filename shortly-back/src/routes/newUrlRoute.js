@@ -1,11 +1,11 @@
 import { Router } from "express"
-import NewUrlMiddleware from '../midlewares/newUrlValidationMiddleware.js';
-import TokenValidateMiddleware from '../midlewares/tokenValidationMidleware.js';
+import newUrlMiddleware from '../midlewares/newUrlValidationMiddleware.js';
+import tokenValidateMiddleware from '../midlewares/tokenValidationMidleware.js';
 
-import { NewUrl } from "../controllers/newUrlController.js";
+import { newUrl } from "../controllers/newUrlController.js";
 
 const router = Router()
 
-router.post('/urls/shorten',TokenValidateMiddleware, NewUrlMiddleware, NewUrl)
+router.post('/urls/shorten',tokenValidateMiddleware, newUrlMiddleware, newUrl)
 
 export default router;

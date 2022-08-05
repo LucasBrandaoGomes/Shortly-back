@@ -1,6 +1,6 @@
 import connection from "../database.js";
 
-export async function DeleteUrlById(req, res){
+export async function deleteUrlById(req, res){
     const { id } = req.params
     const userId = res.locals.id
 

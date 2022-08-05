@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
-export default async function TokenValidateMiddleware(req, res, next) {
+export default async function tokenValidateMiddleware(req, res, next) {
     const { authorization } = req.headers
     const token = authorization?.replace('Bearer ', '')
 

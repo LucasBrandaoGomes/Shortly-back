@@ -1,8 +1,8 @@
 import { Router } from "express"
-import { GetUrlById } from "../controllers/getUrlByIdController.js";
+import { getUrlById } from "../controllers/getUrlByIdController.js";
 
 const router = Router()
 
-router.get('/urls/:id', GetUrlById)
+router.get('/urls/:id', getUrlById)
 
 export default router;
