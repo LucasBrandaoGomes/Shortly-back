@@ -9,8 +9,6 @@ CREATE TABLE users (
   OIDS=FALSE
 );
 
-
-
 CREATE TABLE urls (
 	"id" serial NOT NULL,
 	"user_id" serial NOT NULL,
@@ -22,9 +20,6 @@ CREATE TABLE urls (
 ) WITH (
   OIDS=FALSE
 );
-
-
-
 
 ALTER TABLE "urls" ADD CONSTRAINT "urls_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("id");
 
