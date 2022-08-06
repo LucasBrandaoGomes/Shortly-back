@@ -1,6 +1,6 @@
-import connection from '../database.js'
 import { signupSchema } from '../utilities/schemas.js';
 import bcrypt from 'bcrypt';
+import { getUserByEmail } from '../repositories/userRepository.js';
 
 export default async function signUpValidationMiddleware(req, res, next) {
     const newUser = req.body;
@@ -16,8 +16,7 @@ export default async function signUpValidationMiddleware(req, res, next) {
     try{
         // checando se usuario existe
 
-        const userResgistered = await connection.query(`
-            SELECT email FROM users WHERE email=$1`, [newUser.email]);
+        const userResgistered = await getUserByEmail(newUser.email);
         
         if (userResgistered.rows[0]) {
             res.sendStatus(409);

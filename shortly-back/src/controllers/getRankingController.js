@@ -1,13 +1,9 @@
-import connection from "../database.js";
+import { getUrlRanking } from "../repositories/urlRepository.js";
 
 export async function getRanking(req, res){
 
     try{
-        const { rows } = await connection.query(`SELECT u.id AS user_id, COUNT(b.id) AS "linkCount", COALESCE(SUM(b.views),0) AS "countVisit"
-        FROM users u
-        LEFT JOIN urls b
-        ON u.id = b.user_id
-        GROUP BY u.id`)
+        const { rows } = await getUrlRanking()
         
         res.status(200).send(rows)
     }catch (error){

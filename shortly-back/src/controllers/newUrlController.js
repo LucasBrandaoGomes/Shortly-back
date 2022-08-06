@@ -1,5 +1,5 @@
-import connection from "../database.js";
 import { nanoid } from 'nanoid'
+import { inserNewUrl } from "../repositories/urlRepository.js";
 
 export async function newUrl(req, res){
     const  url  = res.locals.url
@@ -10,7 +10,7 @@ export async function newUrl(req, res){
     }
     
     try{
-        await connection.query(`INSERT INTO urls (user_id, url, short_url, created_at) VALUES ($1, $2, $3, $4)`, [id, url, shortUrl, new Date()]);
+        await inserNewUrl(id, url, shortUrl, new Date());
         res.status(201).send(shortNewUrl);
 
     }catch (error){

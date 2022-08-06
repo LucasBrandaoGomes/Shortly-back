@@ -1,8 +1,8 @@
-import connection from '../database.js'
 import { signinSchema } from '../utilities/schemas.js';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
+import { getUserByEmail } from '../repositories/userRepository.js'
 
 dotenv.config();
 const secretKey = process.env.JWT_SECRET
@@ -21,9 +21,8 @@ export default async function signInValidationMiddleware(req, res, next) {
     try{
         // checando se usuario existe
 
-        const userResgistered = await connection.query(`
-            SELECT * FROM users WHERE email=$1`, [newLogin.email]);       
-
+        const userResgistered = await getUserByEmail(newLogin.email);       
+        
         if (userResgistered.rows[0]) {
 
             //checando se a senha esta correta

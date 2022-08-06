@@ -1,15 +1,16 @@
-import connection from "../database.js";
+import { getUrlByUrlId, deleteUrl } from "../repositories/urlRepository.js";
+
 
 export async function deleteUrlById(req, res){
     const { id } = req.params
     const userId = res.locals.id
 
     try{
-        const { rows } = await connection.query(`SELECT id, user_id FROM urls WHERE id=$1`, [id]);
+        const { rows } = await getUrlByUrlId(id)
         if (rows[0]){
             if(rows[0].user_id === userId){
               
-                await connection.query(`DELETE FROM urls WHERE id=$1`, [id])
+                await deleteUrl(id)
                 res.sendStatus(204)
             }else{
                 res.sendStatus(401)
