@@ -1,8 +1,5 @@
-import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
 import { getUserById } from '../repositories/userRepository.js'
-
-dotenv.config();
+import jwt from 'jsonwebtoken';
 
 export default async function tokenValidateMiddleware(req, res, next) {
     const { authorization } = req.headers
@@ -14,7 +11,6 @@ export default async function tokenValidateMiddleware(req, res, next) {
         
     }else{
         const { userId } = jwt.verify(token, process.env.JWT_SECRET);
-        console.log(userId)
         const loggedUser = await getUserById(userId);
         if (!loggedUser.rows[0]) {
             return res.status(401).send('Unauthorized');
