@@ -1,11 +1,9 @@
 import { Router } from "express"
-import newUrlMiddleware from '../midlewares/newUrlValidationMiddleware.js';
-import tokenValidateMiddleware from '../midlewares/tokenValidationMidleware.js';
-
 import { newUrl } from "../controllers/newUrlController.js";
+import { globalMiddleware } from "../midlewares/globalMiddleware.js";
 
 const router = Router()
 
-router.post('/urls/shorten',tokenValidateMiddleware, newUrlMiddleware, newUrl)
+router.post('/urls/shorten',globalMiddleware, newUrl)
 
 export default router;

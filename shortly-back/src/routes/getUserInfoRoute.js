@@ -1,9 +1,9 @@
 import { Router } from "express"
 import { getUserInfo } from "../controllers/getUserInfoController.js";
-import tokenValidateMiddleware from "../midlewares/tokenValidationMidleware.js";
+import { globalMiddleware } from "../midlewares/globalMiddleware.js";
 
 const router = Router()
 
-router.get('/users/me', tokenValidateMiddleware, getUserInfo)
+router.get('/users/me', globalMiddleware, getUserInfo)
 
 export default router;
