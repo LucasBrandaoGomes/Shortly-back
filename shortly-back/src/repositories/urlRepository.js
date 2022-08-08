@@ -21,7 +21,7 @@ export async function deleteUrl(id){
 }
 
 export async function getUrlRanking(){
-    return connection.query(`SELECT u.id AS user_id, COUNT(b.id) AS "linksCount", COALESCE(SUM(b.views),0) AS "visitCount"
+    return connection.query(`SELECT u.id AS user_id, u.name AS name, COUNT(b.id) AS "linksCount", COALESCE(SUM(b.views),0) AS "visitCount"
         FROM users u
         LEFT JOIN urls b
         ON u.id = b.user_id
